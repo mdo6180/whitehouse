@@ -1,12 +1,13 @@
 from whitehouse.base import Component
 from whitehouse.default import *
 from whitehouse.utils import format_html
+from whitehouse.custom import Template
 
 from typing import List, Dict, Union
 
 
 
-class CustomComponent(Component):
+class MyComponent(Component):
     def __init__(
         self, 
         child1: Union[str, 'Component', List['Component']], 
@@ -23,10 +24,22 @@ class CustomComponent(Component):
                 child2
             ], {"class": "container"})
         ], attributes=attributes)
-
-    def __str__(self) -> str:
-        return super().__str__() 
     
+
+class IndexTemplate(Template):
+    def __init__(self, body_content: Component) -> None:
+        super().__init__(
+            html([
+                head([
+                    title("Hello, World!"),
+                    meta({"charset": "UTF-8", "name": "viewport", "content": "width=device-width, initial-scale=1.0"}),
+                ]),
+                body([
+                    body_content
+                ])
+            ])
+        )
+
 
 if __name__ == "__main__":
     component = html([
@@ -37,12 +50,12 @@ if __name__ == "__main__":
             script("", {"src": "script.js"})
         ]),
         body([
-            CustomComponent(
+            MyComponent(
                 p("Hello, World 3!"), 
                 p("Hello, World 4!"), 
                 {"id": "custom-component1"}
             ),
-            CustomComponent(
+            MyComponent(
                 p("Hello, World 5!"), 
                 p("Hello, World 6!"), 
                 {"id": "custom-component2"}
@@ -54,6 +67,11 @@ if __name__ == "__main__":
     print(format_html(component))  # Output: "Hello, World!
 
     print(format_html([
-        CustomComponent(p("Hello, World 3!"), p("Hello, World 4!"), {"id": "custom-component1"}),
-        CustomComponent(p("Hello, World 5!"), p("Hello, World 6!"), {"id": "custom-component2"})
+        MyComponent(p("Hello, World 3!"), p("Hello, World 4!"), {"id": "custom-component1"}),
+        MyComponent(p("Hello, World 5!"), p("Hello, World 6!"), {"id": "custom-component2"})
     ]))  # Output: "Hello, World!
+
+    index_template = IndexTemplate(
+        MyComponent(p("Hello, World 3!"), p("Hello, World 4!"), {"id": "custom-component1"})
+    )
+    print(format_html(index_template))  # Output: "Hello, World!
