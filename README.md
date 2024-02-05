@@ -5,18 +5,18 @@ What I used to do was I packaged the Jinja2 templates into the Anacostia Pipelin
 
 The solution I decided upon was to create a library to render HTML fragments using only python which would not require the use of Jinja2 nor any templating directories that needed to be mounted into the FastAPI sub-application. Distribution of the fragments could be done by packaging the code for the fragments inside the Anacostia Pipeline package where the user could simply import the fragments into their python development environment. From there, the FastAPI sub-applications could simply render the templates during runtime and return the html snippets as the response to htmx requests.
 
-###The whitehouse Library:
+### The whitehouse Library:
 There are only three important files (i.e., modules) in this library:
-#####base.py
+##### base.py
 There is not much to this library. The ```Component``` class in ```base.py``` is the base class that is responsible for constructing the tag for the element. The ```Component``` class simply takes two arguments ```children``` (a list of child components) and ```attributes``` (a dictionary of HTML attributes to put on the element). The ```Component``` simply recursively calls the ```str()``` function to render all of its child components and then places the attributes into the element.
 
-#####default.py
+##### default.py
 A library of all of the basic HTML5 elements codified as components.
 
-#####utils.py
+##### utils.py
 A library that provides functionalities such as formatting the rendered HTML into a more aethetically pleasing format. 
 
-###Example Usage:
+### Example Usage:
 This is how you can use whitehouse to create your own HTML components:
 ```python
 class CustomComponent(Component):
@@ -183,7 +183,7 @@ Advantages of using whitehouse:
 2. Easy to understand: it is fairly easy to see what HTML code will be generated from whitehouse Components. Obviously it is not as easy to see the HTML code that will be created by custom components so as a best practice, create custom components that are simple. In short, create and use custom components at your own peril.
 3. No need to create template files: all rendering is done in python code.
 
-#####Jinja2 vs whitehouse Comparison:
+##### Jinja2 vs whitehouse Comparison:
 for loops:
 ```html
 {% for record in records %}
