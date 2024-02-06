@@ -4,14 +4,13 @@ import pathlib
 
 setup(
     name="whitehouse",
-    version="0.1.0",
+    version="0.2.0",
     description="An html templating library for Python",
     author="Minh-Quan Do",
     author_email="mdo9@gmu.edu",
     long_description=pathlib.Path("README.md").read_text(),
     long_description_content_type='text/markdown',
-    packages=find_packages(),
-    include_package_data=True,
+    packages=find_packages(exclude=["__pycache__", "*.pyc", "*.pyo"]),
     exclude_package_data={
         '': ['__pycache__', '*.pyc', '*.pyo']
     },
