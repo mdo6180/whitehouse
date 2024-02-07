@@ -1,5 +1,5 @@
 # Whitehouse
-Welcome to the Whitehouse HTML Components library. 
+Welcome to the Whitehouse HTML Components library. 8-) 😏
 
 ### Installation:
 ```

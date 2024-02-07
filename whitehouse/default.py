@@ -128,6 +128,10 @@ class meta(Component):
         <meta{self.attributes}/>
         """
 
+class nav(Component):
+    def __init__(self, children: Union[str, 'Component', List['Component']], attributes: Dict[str, str] = {}) -> None:
+        super().__init__(children, attributes)
+
 class script(Component):
     def __init__(self, text: str, attributes: Dict[str, str] = {}) -> None:
         super().__init__(text, attributes)

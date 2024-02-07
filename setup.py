@@ -1,6 +1,10 @@
 from setuptools import setup, find_packages
 import pathlib
+import shutil
 
+# removing dist/ and whitehouse.egg-info/ directories
+shutil.rmtree("dist", ignore_errors=True)
+shutil.rmtree("whitehouse.egg-info", ignore_errors=True)
 
 setup(
     name="whitehouse",
