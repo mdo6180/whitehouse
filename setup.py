@@ -8,7 +8,7 @@ shutil.rmtree("whitehouse.egg-info", ignore_errors=True)
 
 setup(
     name="whitehouse",
-    version="0.2.0",
+    version="0.3.0",
     description="An html templating library for Python",
     author="Minh-Quan Do",
     author_email="mdo9@gmu.edu",
