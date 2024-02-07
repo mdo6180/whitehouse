@@ -4,16 +4,16 @@ from typing import List, Dict, Union
 
 
 class a(Component):
-    def __init__(self, text: str, attributes: Dict[str, str] = {}) -> None:
-        super().__init__(text, attributes)
+    def __init__(self, children: Union[str, 'Component', List['Component']], attributes: Dict[str, str] = {}) -> None:
+        super().__init__(children, attributes)
 
 class body(Component):
     def __init__(self, children: Union[str, 'Component', List['Component']], attributes: Dict[str, str] = {}) -> None:
         super().__init__(children, attributes)
     
 class br(Component):
-    def __init__(self) -> None:
-        super().__init__("")
+    def __init__(self, attributes: Dict[str, str] = {}) -> None:
+        super().__init__("", attributes)
 
     def __str__(self) -> str:
         return f"""
@@ -214,8 +214,8 @@ class video(Component):
         super().__init__(children, attributes)
 
 class wbr(Component):
-    def __init__(self) -> None:
-        super().__init__("")
+    def __init__(self, attributes: Dict[str, str] = {}) -> None:
+        super().__init__("", attributes)
 
     def __str__(self) -> str:
         return f"""

@@ -6,9 +6,13 @@ import shutil
 shutil.rmtree("dist", ignore_errors=True)
 shutil.rmtree("whitehouse.egg-info", ignore_errors=True)
 
+# build instructions
+# python3 -m build
+# twine upload dist/*
+
 setup(
     name="whitehouse",
-    version="0.3.0",
+    version="0.3.1",
     description="An html templating library for Python",
     author="Minh-Quan Do",
     author_email="mdo9@gmu.edu",
